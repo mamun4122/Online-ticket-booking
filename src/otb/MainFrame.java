@@ -1,0 +1,2172 @@
+/*
+ * To change this lice
+    @Override
+    public void paintIcon(Component c, Graphics g, int x, int y) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int getIconWidth() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int getIconHeight() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+nse header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package otb;
+
+import com.sun.org.apache.bcel.internal.generic.CHECKCAST;
+import java.awt.Checkbox;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.scene.paint.Color;
+import javax.crypto.SealedObject;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.Timer;
+import javax.swing.table.DefaultTableModel;
+
+/**
+ *
+ * @author Shubhashis
+ */
+public class MainFrame extends javax.swing.JFrame implements ActionListener{
+    String fromm,pickUpPlace,too,busString,dateString,timeString;
+    String userNameFromLogIn;
+    boolean flg[];
+    String seats[];
+    ArrayList seatSet = new ArrayList();
+    ArrayList jeiSeatBadDibe = new ArrayList();
+    JButton btnButton[];
+    //String seatNameString[];
+    Icon zero = new ImageIcon(getClass().getResource("/otb/seat/ash_seat.png"));
+    Icon one = new ImageIcon(getClass().getResource("/otb/seat/red_seat.png"));
+    Icon two = new ImageIcon(getClass().getResource("/otb/seat/yellow_seat.png"));
+    Icon selectIcon = new ImageIcon(getClass().getResource("/otb/seat/green_seat.png"));
+    Icon disabledIcon = new ImageIcon(getClass().getResource("/otb/seat/Submit_dis.png"));
+    boolean seatFlag[]=new boolean[40];
+    /**
+     * Creates new form MainFrame
+     */
+    public MainFrame() {
+        initComponents();
+        
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/bc.jpg"))); // NOI18N
+        jLabel16.setBounds(0, -10, 580, 740);
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/bc.jpg"))); // NOI18N
+        jLabel19.setBounds(0, -10, 580, 740);
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/bc.jpg"))); // NOI18N
+        jLabel20.setBounds(0, -10, 580, 740);
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/bc.jpg"))); // NOI18N
+        jLabel21.setBounds(0, -10, 580, 740);
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/bc.jpg"))); // NOI18N
+        jLabel22.setBounds(0, -10, 580, 740);
+        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/bc.jpg"))); // NOI18N
+        jLabel23.setBounds(0, -10, 580, 740);
+        
+        bookSubmitButton.setDisabledIcon(disabledIcon);
+        seats = new String[] { 
+            "A1","A2","A3","A4",
+            "B1","B2","B3","B4",
+            "C1","C2","C3","C4",
+            "D1","D2","D3","D4",
+            "E1","E2","E3","E4",
+            "F1","F2","F3","F4",
+            "G1","G2","G3","G4",
+            "H1","H2","H3","H4",
+            "I1","I2","I3","I4",
+            "J1","J2","J3","J4"};
+        this.btnButton = new JButton[]{A1, A2, A3, A4, B1, B2, B3, B4, C1, C2, C3, C4, D1, D2, D3, D4, E1, E2, E3, E4, F1, F2, F3, F4, G1, G2, G3, G4, H1, H2, H3, H4, I1, I2, I3, I4, J1, J2, J3, J4};
+        for(int i=0;i<40;i++)
+        {
+            seatFlag[i]=false;
+        }
+        setLocationRelativeTo(null);
+        flg = new boolean[8];
+        for(int i=0;i<8;i++)
+        {
+            flg[i]=false;
+        }
+        jComboBox2.setEnabled(false);
+        jComboBox3.setEnabled(false);
+        jComboBox4.setEnabled(false);
+        jComboBox5.setEnabled(false);
+        jComboBox6.setEnabled(false);
+        bookSubmitButton.setEnabled(false);
+        for(int i=0;i<40;i++)
+        {
+            btnButton[i].addActionListener(this);
+        }
+    }
+
+    public void setUserNameFromLogIn(String userNameFromLogIn) {
+        this.userNameFromLogIn = userNameFromLogIn;
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jPanel3 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        BookingPanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox();
+        jComboBox3 = new javax.swing.JComboBox();
+        jComboBox4 = new javax.swing.JComboBox();
+        jComboBox5 = new javax.swing.JComboBox();
+        jComboBox6 = new javax.swing.JComboBox();
+        bookSubmitButton = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
+        SeatPlanPanel = new javax.swing.JPanel();
+        A1 = new javax.swing.JButton();
+        A2 = new javax.swing.JButton();
+        A3 = new javax.swing.JButton();
+        A4 = new javax.swing.JButton();
+        B1 = new javax.swing.JButton();
+        B2 = new javax.swing.JButton();
+        B3 = new javax.swing.JButton();
+        B4 = new javax.swing.JButton();
+        C1 = new javax.swing.JButton();
+        C2 = new javax.swing.JButton();
+        C3 = new javax.swing.JButton();
+        C4 = new javax.swing.JButton();
+        D1 = new javax.swing.JButton();
+        D2 = new javax.swing.JButton();
+        D3 = new javax.swing.JButton();
+        D4 = new javax.swing.JButton();
+        E1 = new javax.swing.JButton();
+        E2 = new javax.swing.JButton();
+        E3 = new javax.swing.JButton();
+        E4 = new javax.swing.JButton();
+        F1 = new javax.swing.JButton();
+        F2 = new javax.swing.JButton();
+        F3 = new javax.swing.JButton();
+        F4 = new javax.swing.JButton();
+        G1 = new javax.swing.JButton();
+        G2 = new javax.swing.JButton();
+        G3 = new javax.swing.JButton();
+        G4 = new javax.swing.JButton();
+        H1 = new javax.swing.JButton();
+        H2 = new javax.swing.JButton();
+        H3 = new javax.swing.JButton();
+        H4 = new javax.swing.JButton();
+        I1 = new javax.swing.JButton();
+        I2 = new javax.swing.JButton();
+        I3 = new javax.swing.JButton();
+        I4 = new javax.swing.JButton();
+        J1 = new javax.swing.JButton();
+        J2 = new javax.swing.JButton();
+        J3 = new javax.swing.JButton();
+        J4 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        CancelPanel = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jButton9 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jButton10 = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        PaymentPanel = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jButton11 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        PaymentStatusPanel = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jButton13 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextArea3 = new javax.swing.JTextArea();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        PreviousPurchasePanel = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        PrintPanel = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jTextArea1 = new javax.swing.JTextArea();
+        jTextField5 = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
+        jButton14 = new javax.swing.JButton();
+        jLabel22 = new javax.swing.JLabel();
+        Copy = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        fileMenu = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        helpMenu = new javax.swing.JMenu();
+        About = new javax.swing.JMenuItem();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("ONLINE TICKET BOOKING");
+        setBackground(new java.awt.Color(255, 255, 255));
+        setBounds(new java.awt.Rectangle(200, 200, 0, 0));
+        setIconImage(Toolkit.getDefaultToolkit().getImage(JFrame.class.getResource("/otb/seat/icon.jpg")));
+        setPreferredSize(new java.awt.Dimension(780, 722));
+        setResizable(false);
+
+        jPanel3.setBackground(new java.awt.Color(21, 21, 21));
+
+        jButton1.setBackground(new java.awt.Color(21, 21, 21));
+        jButton1.setFont(new java.awt.Font("Algerian", 0, 16)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Advance Booking");
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton1MouseExited(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setBackground(new java.awt.Color(21, 21, 21));
+        jButton2.setFont(new java.awt.Font("Algerian", 0, 16)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Cancel Booking");
+        jButton2.setBorder(null);
+        jButton2.setBorderPainted(false);
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton2MouseExited(evt);
+            }
+        });
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setBackground(new java.awt.Color(21, 21, 21));
+        jButton3.setFont(new java.awt.Font("Algerian", 0, 16)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("Payment");
+        jButton3.setBorder(null);
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton3MouseExited(evt);
+            }
+        });
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setBackground(new java.awt.Color(21, 21, 21));
+        jButton4.setFont(new java.awt.Font("Algerian", 0, 16)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setText("Payment Status");
+        jButton4.setBorder(null);
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton4MouseExited(evt);
+            }
+        });
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setBackground(new java.awt.Color(21, 21, 21));
+        jButton5.setFont(new java.awt.Font("Algerian", 0, 16)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(255, 255, 255));
+        jButton5.setText("Previous Purchases");
+        jButton5.setBorder(null);
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton5MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton5MouseExited(evt);
+            }
+        });
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jButton7.setBackground(new java.awt.Color(21, 21, 21));
+        jButton7.setFont(new java.awt.Font("Algerian", 0, 16)); // NOI18N
+        jButton7.setForeground(new java.awt.Color(255, 255, 255));
+        jButton7.setText("Print");
+        jButton7.setBorder(null);
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton7MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton7MouseExited(evt);
+            }
+        });
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        jButton12.setBackground(new java.awt.Color(21, 21, 21));
+        jButton12.setFont(new java.awt.Font("Algerian", 0, 16)); // NOI18N
+        jButton12.setForeground(new java.awt.Color(255, 255, 255));
+        jButton12.setText("Log Out");
+        jButton12.setBorder(null);
+        jButton12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton12MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton12MouseExited(evt);
+            }
+        });
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jButton12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        jPanel1.setBackground(new java.awt.Color(204, 0, 51));
+        jPanel1.setLayout(new java.awt.CardLayout());
+
+        BookingPanel.setBackground(new java.awt.Color(229, 192, 134));
+        BookingPanel.setLayout(null);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setText("From");
+        BookingPanel.add(jLabel1);
+        jLabel1.setBounds(99, 36, 100, 50);
+
+        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SELECT" }));
+        jComboBox1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jComboBox1MouseClicked(evt);
+            }
+        });
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        BookingPanel.add(jComboBox1);
+        jComboBox1.setBounds(217, 47, 180, 28);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setText("Pickup Place");
+        BookingPanel.add(jLabel2);
+        jLabel2.setBounds(99, 104, 100, 50);
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setText("To");
+        jLabel3.setToolTipText("");
+        BookingPanel.add(jLabel3);
+        jLabel3.setBounds(99, 172, 100, 50);
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setText("Bus");
+        BookingPanel.add(jLabel4);
+        jLabel4.setBounds(99, 240, 100, 50);
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel5.setText("Date");
+        BookingPanel.add(jLabel5);
+        jLabel5.setBounds(99, 308, 100, 50);
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel6.setText("Time");
+        BookingPanel.add(jLabel6);
+        jLabel6.setBounds(99, 376, 100, 50);
+
+        jComboBox2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SELECT" }));
+        jComboBox2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jComboBox2MouseClicked(evt);
+            }
+        });
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
+        BookingPanel.add(jComboBox2);
+        jComboBox2.setBounds(217, 115, 180, 28);
+
+        jComboBox3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SELECT" }));
+        jComboBox3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jComboBox3MouseClicked(evt);
+            }
+        });
+        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox3ActionPerformed(evt);
+            }
+        });
+        BookingPanel.add(jComboBox3);
+        jComboBox3.setBounds(217, 183, 180, 28);
+
+        jComboBox4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SELECT" }));
+        jComboBox4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jComboBox4MouseClicked(evt);
+            }
+        });
+        jComboBox4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox4ActionPerformed(evt);
+            }
+        });
+        BookingPanel.add(jComboBox4);
+        jComboBox4.setBounds(217, 251, 180, 28);
+
+        jComboBox5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SELECT" }));
+        jComboBox5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jComboBox5MouseClicked(evt);
+            }
+        });
+        jComboBox5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox5ActionPerformed(evt);
+            }
+        });
+        BookingPanel.add(jComboBox5);
+        jComboBox5.setBounds(217, 319, 180, 28);
+
+        jComboBox6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SELECT" }));
+        jComboBox6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jComboBox6MouseClicked(evt);
+            }
+        });
+        jComboBox6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox6ActionPerformed(evt);
+            }
+        });
+        BookingPanel.add(jComboBox6);
+        jComboBox6.setBounds(217, 387, 180, 28);
+
+        bookSubmitButton.setBackground(new java.awt.Color(229, 192, 134));
+        bookSubmitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/submit.png"))); // NOI18N
+        bookSubmitButton.setBorder(null);
+        bookSubmitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bookSubmitButtonActionPerformed(evt);
+            }
+        });
+        BookingPanel.add(bookSubmitButton);
+        bookSubmitButton.setBounds(217, 455, 97, 32);
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/bc.jpg"))); // NOI18N
+        BookingPanel.add(jLabel15);
+        jLabel15.setBounds(0, -10, 580, 740);
+
+        jPanel1.add(BookingPanel, "card2");
+
+        SeatPlanPanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        A1.setBackground(new java.awt.Color(255, 255, 255));
+        A1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/ash_seat.png"))); // NOI18N
+        A1.setBorder(null);
+        A1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                A1ActionPerformed(evt);
+            }
+        });
+
+        A2.setBackground(new java.awt.Color(255, 255, 255));
+        A2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/ash_seat.png"))); // NOI18N
+        A2.setBorder(null);
+
+        A3.setBackground(new java.awt.Color(255, 255, 255));
+        A3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/ash_seat.png"))); // NOI18N
+        A3.setBorder(null);
+
+        A4.setBackground(new java.awt.Color(255, 255, 255));
+        A4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/ash_seat.png"))); // NOI18N
+        A4.setBorder(null);
+
+        B1.setBackground(new java.awt.Color(255, 255, 255));
+        B1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/ash_seat.png"))); // NOI18N
+        B1.setBorder(null);
+
+        B2.setBackground(new java.awt.Color(255, 255, 255));
+        B2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/ash_seat.png"))); // NOI18N
+        B2.setBorder(null);
+
+        B3.setBackground(new java.awt.Color(255, 255, 255));
+        B3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/ash_seat.png"))); // NOI18N
+        B3.setBorder(null);
+
+        B4.setBackground(new java.awt.Color(255, 255, 255));
+        B4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/ash_seat.png"))); // NOI18N
+        B4.setBorder(null);
+
+        C1.setBackground(new java.awt.Color(255, 255, 255));
+        C1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/ash_seat.png"))); // NOI18N
+        C1.setBorder(null);
+
+        C2.setBackground(new java.awt.Color(255, 255, 255));
+        C2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/ash_seat.png"))); // NOI18N
+        C2.setBorder(null);
+
+        C3.setBackground(new java.awt.Color(255, 255, 255));
+        C3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/ash_seat.png"))); // NOI18N
+        C3.setBorder(null);
+
+        C4.setBackground(new java.awt.Color(255, 255, 255));
+        C4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/ash_seat.png"))); // NOI18N
+        C4.setBorder(null);
+
+        D1.setBackground(new java.awt.Color(255, 255, 255));
+        D1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/ash_seat.png"))); // NOI18N
+        D1.setBorder(null);
+        D1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                D1ActionPerformed(evt);
+            }
+        });
+
+        D2.setBackground(new java.awt.Color(255, 255, 255));
+        D2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/ash_seat.png"))); // NOI18N
+        D2.setBorder(null);
+
+        D3.setBackground(new java.awt.Color(255, 255, 255));
+        D3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/ash_seat.png"))); // NOI18N
+        D3.setBorder(null);
+
+        D4.setBackground(new java.awt.Color(255, 255, 255));
+        D4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/ash_seat.png"))); // NOI18N
+        D4.setBorder(null);
+        D4.setBorderPainted(false);
+
+        E1.setBackground(new java.awt.Color(255, 255, 255));
+        E1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/ash_seat.png"))); // NOI18N
+        E1.setBorder(null);
+
+        E2.setBackground(new java.awt.Color(255, 255, 255));
+        E2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/ash_seat.png"))); // NOI18N
+        E2.setBorder(null);
+
+        E3.setBackground(new java.awt.Color(255, 255, 255));
+        E3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/ash_seat.png"))); // NOI18N
+        E3.setBorder(null);
+
+        E4.setBackground(new java.awt.Color(255, 255, 255));
+        E4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/ash_seat.png"))); // NOI18N
+        E4.setBorder(null);
+
+        F1.setBackground(new java.awt.Color(255, 255, 255));
+        F1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/ash_seat.png"))); // NOI18N
+        F1.setBorder(null);
+        F1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                F1ActionPerformed(evt);
+            }
+        });
+
+        F2.setBackground(new java.awt.Color(255, 255, 255));
+        F2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/ash_seat.png"))); // NOI18N
+        F2.setBorder(null);
+
+        F3.setBackground(new java.awt.Color(255, 255, 255));
+        F3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/ash_seat.png"))); // NOI18N
+        F3.setBorder(null);
+
+        F4.setBackground(new java.awt.Color(255, 255, 255));
+        F4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/ash_seat.png"))); // NOI18N
+        F4.setBorder(null);
+
+        G1.setBackground(new java.awt.Color(255, 255, 255));
+        G1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/ash_seat.png"))); // NOI18N
+        G1.setBorder(null);
+
+        G2.setBackground(new java.awt.Color(255, 255, 255));
+        G2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/ash_seat.png"))); // NOI18N
+        G2.setBorder(null);
+
+        G3.setBackground(new java.awt.Color(255, 255, 255));
+        G3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/ash_seat.png"))); // NOI18N
+        G3.setBorder(null);
+
+        G4.setBackground(new java.awt.Color(255, 255, 255));
+        G4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/ash_seat.png"))); // NOI18N
+        G4.setBorder(null);
+
+        H1.setBackground(new java.awt.Color(255, 255, 255));
+        H1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/ash_seat.png"))); // NOI18N
+        H1.setBorder(null);
+
+        H2.setBackground(new java.awt.Color(255, 255, 255));
+        H2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/ash_seat.png"))); // NOI18N
+        H2.setBorder(null);
+
+        H3.setBackground(new java.awt.Color(255, 255, 255));
+        H3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/ash_seat.png"))); // NOI18N
+        H3.setBorder(null);
+
+        H4.setBackground(new java.awt.Color(255, 255, 255));
+        H4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/ash_seat.png"))); // NOI18N
+        H4.setBorder(null);
+
+        I1.setBackground(new java.awt.Color(255, 255, 255));
+        I1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/ash_seat.png"))); // NOI18N
+        I1.setBorder(null);
+
+        I2.setBackground(new java.awt.Color(255, 255, 255));
+        I2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/ash_seat.png"))); // NOI18N
+        I2.setBorder(null);
+
+        I3.setBackground(new java.awt.Color(255, 255, 255));
+        I3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/ash_seat.png"))); // NOI18N
+        I3.setBorder(null);
+
+        I4.setBackground(new java.awt.Color(255, 255, 255));
+        I4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/ash_seat.png"))); // NOI18N
+        I4.setBorder(null);
+
+        J1.setBackground(new java.awt.Color(255, 255, 255));
+        J1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/ash_seat.png"))); // NOI18N
+        J1.setBorder(null);
+
+        J2.setBackground(new java.awt.Color(255, 255, 255));
+        J2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/ash_seat.png"))); // NOI18N
+        J2.setBorder(null);
+
+        J3.setBackground(new java.awt.Color(255, 255, 255));
+        J3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/ash_seat.png"))); // NOI18N
+        J3.setBorder(null);
+
+        J4.setBackground(new java.awt.Color(255, 255, 255));
+        J4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/ash_seat.png"))); // NOI18N
+        J4.setBorder(null);
+
+        jButton8.setBackground(new java.awt.Color(255, 255, 255));
+        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/submit.png"))); // NOI18N
+        jButton8.setToolTipText("");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout SeatPlanPanelLayout = new javax.swing.GroupLayout(SeatPlanPanel);
+        SeatPlanPanel.setLayout(SeatPlanPanelLayout);
+        SeatPlanPanelLayout.setHorizontalGroup(
+            SeatPlanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SeatPlanPanelLayout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addGroup(SeatPlanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(SeatPlanPanelLayout.createSequentialGroup()
+                        .addComponent(B1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(B2))
+                    .addGroup(SeatPlanPanelLayout.createSequentialGroup()
+                        .addGroup(SeatPlanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(SeatPlanPanelLayout.createSequentialGroup()
+                                .addGroup(SeatPlanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(D1)
+                                    .addComponent(E1)
+                                    .addComponent(F1)
+                                    .addComponent(G1)
+                                    .addComponent(H1)
+                                    .addComponent(I1)
+                                    .addComponent(J1))
+                                .addGap(34, 34, 34))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, SeatPlanPanelLayout.createSequentialGroup()
+                                .addComponent(C1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(SeatPlanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(C2)
+                            .addComponent(D2)
+                            .addComponent(E2)
+                            .addComponent(F2)
+                            .addComponent(H2)
+                            .addComponent(I2)
+                            .addComponent(J2)
+                            .addComponent(G2)))
+                    .addGroup(SeatPlanPanelLayout.createSequentialGroup()
+                        .addComponent(A1)
+                        .addGap(34, 34, 34)
+                        .addComponent(A2)))
+                .addGap(47, 47, 47)
+                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addGroup(SeatPlanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(A3)
+                    .addComponent(B3)
+                    .addComponent(C3)
+                    .addComponent(D3)
+                    .addComponent(E3)
+                    .addComponent(F3)
+                    .addComponent(H3)
+                    .addComponent(I3)
+                    .addComponent(J3)
+                    .addComponent(G3))
+                .addGap(43, 43, 43)
+                .addGroup(SeatPlanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(J4)
+                    .addComponent(I4)
+                    .addComponent(H4)
+                    .addComponent(G4)
+                    .addComponent(F4)
+                    .addComponent(E4)
+                    .addComponent(D4)
+                    .addComponent(C4)
+                    .addComponent(B4)
+                    .addComponent(A4))
+                .addGap(43, 43, 43))
+        );
+        SeatPlanPanelLayout.setVerticalGroup(
+            SeatPlanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SeatPlanPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(SeatPlanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(SeatPlanPanelLayout.createSequentialGroup()
+                        .addGroup(SeatPlanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(A1)
+                            .addComponent(A2)
+                            .addComponent(A3)
+                            .addComponent(A4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(SeatPlanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(B2)
+                            .addComponent(B3)
+                            .addComponent(B4)
+                            .addComponent(B1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(SeatPlanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(C1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(SeatPlanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(C2)
+                                .addComponent(C3)
+                                .addComponent(C4)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(SeatPlanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(D1)
+                            .addComponent(D2)
+                            .addComponent(D3)
+                            .addComponent(D4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(SeatPlanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(E1)
+                            .addComponent(E2)
+                            .addComponent(E3)
+                            .addComponent(E4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(SeatPlanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(F1)
+                            .addComponent(F2)
+                            .addComponent(F3)
+                            .addComponent(F4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(SeatPlanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(G1)
+                            .addComponent(G3)
+                            .addComponent(G4)
+                            .addComponent(G2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(SeatPlanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(H1)
+                            .addComponent(H2)
+                            .addComponent(H3)
+                            .addComponent(H4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(SeatPlanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(I1)
+                            .addComponent(I2)
+                            .addComponent(I3)
+                            .addComponent(I4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(SeatPlanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(J1)
+                            .addComponent(J2)
+                            .addComponent(J3)
+                            .addComponent(J4))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(SeatPlanPanel, "card2");
+
+        CancelPanel.setBackground(new java.awt.Color(229, 192, 134));
+        CancelPanel.setLayout(null);
+
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 3, 20)); // NOI18N
+        jLabel7.setText("Ticket ID");
+        CancelPanel.add(jLabel7);
+        jLabel7.setBounds(80, 128, 100, 24);
+        CancelPanel.add(jTextField1);
+        jTextField1.setBounds(198, 128, 150, 30);
+
+        jButton9.setBackground(new java.awt.Color(229, 192, 134));
+        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/check.png"))); // NOI18N
+        jButton9.setBorder(null);
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+        CancelPanel.add(jButton9);
+        jButton9.setBounds(395, 128, 85, 32);
+
+        jLabel8.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
+        jLabel8.setText("Information");
+        CancelPanel.add(jLabel8);
+        jLabel8.setBounds(10, 221, 140, 29);
+
+        jButton10.setBackground(new java.awt.Color(229, 192, 134));
+        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/cancel.png"))); // NOI18N
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+        CancelPanel.add(jButton10);
+        jButton10.setBounds(220, 610, 155, 32);
+
+        jScrollPane4.setOpaque(false);
+
+        jPanel2.setAutoscrolls(true);
+        jPanel2.setOpaque(false);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 582, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+
+        jScrollPane4.setViewportView(jPanel2);
+
+        CancelPanel.add(jScrollPane4);
+        jScrollPane4.setBounds(10, 261, 556, 130);
+        CancelPanel.add(jLabel16);
+        jLabel16.setBounds(290, 70, 0, 0);
+
+        jPanel1.add(CancelPanel, "card3");
+
+        PaymentPanel.setBackground(new java.awt.Color(229, 192, 134));
+        PaymentPanel.setLayout(null);
+
+        jLabel17.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        jLabel17.setText("Ticket ID:");
+        PaymentPanel.add(jLabel17);
+        jLabel17.setBounds(49, 123, 100, 22);
+
+        jTextField3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        PaymentPanel.add(jTextField3);
+        jTextField3.setBounds(167, 119, 355, 28);
+
+        jLabel18.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        jLabel18.setText("bKash ID:");
+        PaymentPanel.add(jLabel18);
+        jLabel18.setBounds(49, 169, 100, 22);
+
+        jTextField4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        PaymentPanel.add(jTextField4);
+        jTextField4.setBounds(167, 165, 355, 28);
+
+        jButton11.setBackground(new java.awt.Color(229, 192, 134));
+        jButton11.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/submit.png"))); // NOI18N
+        jButton11.setBorder(null);
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
+        PaymentPanel.add(jButton11);
+        jButton11.setBounds(229, 211, 101, 33);
+
+        jTextArea2.setEditable(false);
+        jTextArea2.setColumns(20);
+        jTextArea2.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jTextArea2.setRows(5);
+        jScrollPane2.setViewportView(jTextArea2);
+
+        PaymentPanel.add(jScrollPane2);
+        jScrollPane2.setBounds(49, 356, 465, 101);
+
+        jLabel13.setFont(new java.awt.Font("Rockwell", 3, 20)); // NOI18N
+        jLabel13.setText("Status");
+        PaymentPanel.add(jLabel13);
+        jLabel13.setBounds(49, 326, 57, 24);
+        PaymentPanel.add(jLabel19);
+        jLabel19.setBounds(390, 280, 0, 0);
+
+        jPanel1.add(PaymentPanel, "card4");
+
+        PaymentStatusPanel.setBackground(new java.awt.Color(229, 192, 134));
+        PaymentStatusPanel.setLayout(null);
+
+        jLabel9.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        jLabel9.setText("Ticket ID");
+        PaymentStatusPanel.add(jLabel9);
+        jLabel9.setBounds(48, 127, 71, 22);
+
+        jTextField2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+        PaymentStatusPanel.add(jTextField2);
+        jTextField2.setBounds(151, 122, 279, 32);
+
+        jButton13.setBackground(new java.awt.Color(229, 192, 134));
+        jButton13.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/check.png"))); // NOI18N
+        jButton13.setBorder(null);
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
+        PaymentStatusPanel.add(jButton13);
+        jButton13.setBounds(448, 122, 85, 32);
+
+        jTextArea3.setColumns(20);
+        jTextArea3.setRows(5);
+        jScrollPane3.setViewportView(jTextArea3);
+
+        PaymentStatusPanel.add(jScrollPane3);
+        jScrollPane3.setBounds(48, 361, 485, 96);
+
+        jLabel10.setFont(new java.awt.Font("Rockwell Extra Bold", 2, 20)); // NOI18N
+        jLabel10.setText("Payment Status");
+        PaymentStatusPanel.add(jLabel10);
+        jLabel10.setBounds(48, 331, 186, 24);
+        PaymentStatusPanel.add(jLabel20);
+        jLabel20.setBounds(500, 230, 0, 0);
+
+        jPanel1.add(PaymentStatusPanel, "card2");
+
+        PreviousPurchasePanel.setBackground(new java.awt.Color(229, 192, 134));
+        PreviousPurchasePanel.setLayout(null);
+
+        jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(21, 21, 21), 2));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Purchase ID", "From", "To", "Bus", "Date", "Time", "Status"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.setGridColor(new java.awt.Color(74, 112, 139));
+        jTable1.setOpaque(false);
+        jScrollPane1.setViewportView(jTable1);
+
+        PreviousPurchasePanel.add(jScrollPane1);
+        jScrollPane1.setBounds(10, 103, 556, 217);
+
+        jLabel14.setFont(new java.awt.Font("Rockwell", 3, 20)); // NOI18N
+        jLabel14.setText("Previous Purchase");
+        PreviousPurchasePanel.add(jLabel14);
+        jLabel14.setBounds(10, 68, 175, 24);
+        PreviousPurchasePanel.add(jLabel23);
+        jLabel23.setBounds(340, 380, 0, 0);
+
+        jPanel1.add(PreviousPurchasePanel, "card2");
+
+        PrintPanel.setBackground(new java.awt.Color(229, 192, 134));
+        PrintPanel.setLayout(null);
+
+        jLabel11.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
+        jLabel11.setText("Your Recipt");
+        PrintPanel.add(jLabel11);
+        jLabel11.setBounds(199, 75, 140, 29);
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jTextArea1.setRows(5);
+        jTextArea1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4));
+        jTextArea1.setOpaque(false);
+        PrintPanel.add(jTextArea1);
+        jTextArea1.setBounds(20, 130, 540, 280);
+        PrintPanel.add(jTextField5);
+        jTextField5.setBounds(180, 26, 237, 25);
+
+        jLabel12.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        jLabel12.setText("Ticket ID");
+        PrintPanel.add(jLabel12);
+        jLabel12.setBounds(91, 25, 71, 22);
+
+        jButton6.setBackground(new java.awt.Color(229, 192, 134));
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/check.png"))); // NOI18N
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        PrintPanel.add(jButton6);
+        jButton6.setBounds(435, 25, 85, 32);
+
+        jButton14.setBackground(new java.awt.Color(229, 192, 134));
+        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otb/seat/print.png"))); // NOI18N
+        jButton14.setBorder(null);
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14ActionPerformed(evt);
+            }
+        });
+        PrintPanel.add(jButton14);
+        jButton14.setBounds(220, 530, 73, 32);
+        PrintPanel.add(jLabel22);
+        jLabel22.setBounds(440, 670, 0, 0);
+
+        jPanel1.add(PrintPanel, "card2");
+
+        Copy.setBackground(new java.awt.Color(74, 112, 139));
+
+        javax.swing.GroupLayout CopyLayout = new javax.swing.GroupLayout(Copy);
+        Copy.setLayout(CopyLayout);
+        CopyLayout.setHorizontalGroup(
+            CopyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CopyLayout.createSequentialGroup()
+                .addContainerGap(318, Short.MAX_VALUE)
+                .addComponent(jLabel21)
+                .addGap(258, 258, 258))
+        );
+        CopyLayout.setVerticalGroup(
+            CopyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CopyLayout.createSequentialGroup()
+                .addGap(332, 332, 332)
+                .addComponent(jLabel21)
+                .addContainerGap(369, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(Copy, "card2");
+
+        fileMenu.setText("File");
+
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem1.setText("EXIT");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        fileMenu.add(jMenuItem1);
+
+        jMenuBar1.add(fileMenu);
+
+        helpMenu.setText("Help");
+
+        About.setText("About");
+        About.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AboutActionPerformed(evt);
+            }
+        });
+        helpMenu.add(About);
+
+        jMenuBar1.add(helpMenu);
+
+        setJMenuBar(jMenuBar1);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 576, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        clearFlag();
+        flg[0]=true;
+        jButton1.setBackground(new java.awt.Color(122,122,122));
+        
+        jPanel1.removeAll();
+        jPanel1.repaint();
+        jPanel1.revalidate();
+        
+        jPanel1.add(BookingPanel);
+        jPanel1.repaint();
+        jPanel1.revalidate();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void bookSubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookSubmitButtonActionPerformed
+        // TODO add your handling code here:
+        System.out.println(fromm+"\n"+pickUpPlace+"\n"+too+"\n"+busString+"\n"+dateString+"\n"+timeString);
+        jPanel1.removeAll();;
+        jPanel1.repaint();
+        jPanel1.revalidate();
+        
+        jPanel1.add(SeatPlanPanel);
+        jPanel1.repaint();
+        jPanel1.revalidate();
+        
+        String sql = "select * from booking where fromm ='"+fromm+"' and too = '"+too+"' and bus = '"+busString+"' and date = '"+dateString+"' and time = '"+timeString+"'"; 
+        int arr[]=new int[40];
+        arr=DatabaseHelper.fetchAllData(sql);
+        
+        for(int i=0;i<40;i++)
+        {
+            if(arr[i]==0)
+            {
+                btnButton[i].setDisabledIcon(zero);
+            }
+            else if(arr[i]==1)
+            {
+                btnButton[i].setEnabled(false);
+                btnButton[i].setDisabledIcon(one);
+            }
+            else
+            {
+                btnButton[i].setEnabled(false);
+                btnButton[i].setDisabledIcon(two);
+            }
+        }
+        clearSeatFlag();
+    }//GEN-LAST:event_bookSubmitButtonActionPerformed
+    
+    
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        clearFlag();
+        flg[1]=true;
+        jButton2.setBackground(new java.awt.Color(122,122,122));
+        
+        jPanel1.removeAll();
+        jPanel1.repaint();
+        jPanel1.revalidate();
+        
+        jPanel1.add(CancelPanel);
+        jPanel1.repaint();
+        jPanel1.revalidate();
+        
+        jTextField1.setText("");
+        jButton9.setEnabled(true);
+        jPanel2.removeAll();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        clearFlag();
+        flg[6]=true;
+        jButton7.setBackground(new java.awt.Color(122,122,122));
+        
+        jPanel1.removeAll();
+        jPanel1.repaint();
+        jPanel1.revalidate();
+        
+        jPanel1.add(PrintPanel);
+        jPanel1.repaint();
+        jPanel1.revalidate();
+        
+        
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        clearFlag();
+        flg[2]=true;
+        jButton3.setBackground(new java.awt.Color(122,122,122));
+        
+        jPanel1.removeAll();
+        jPanel1.repaint();
+        jPanel1.revalidate();
+        
+        jPanel1.add(PaymentPanel);
+        jPanel1.repaint();
+        jPanel1.revalidate();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        // TODO add your handling code here:
+        LogInRegister ob = new LogInRegister();
+        ob.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        clearFlag();
+        flg[3]=true;
+        jButton4.setBackground(new java.awt.Color(122,122,122));
+        
+        jPanel1.removeAll();
+        jPanel1.repaint();
+        jPanel1.revalidate();
+        
+        jPanel1.add(PaymentStatusPanel);
+        jPanel1.repaint();
+        jPanel1.revalidate();
+        
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void AboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AboutActionPerformed
+        // TODO add your handling code here:
+        About ob = new About();
+        ob.setVisible(true);
+    }//GEN-LAST:event_AboutActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+        fromm = String.valueOf(jComboBox1.getSelectedItem());
+        System.out.println(fromm);
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
+        // TODO add your handling code here:
+        if(flg[0]==false)
+            jButton1.setBackground(new java.awt.Color(93,93,93));
+    }//GEN-LAST:event_jButton1MouseEntered
+
+    private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
+        // TODO add your handling code here:
+        if(flg[0]==false)
+            jButton1.setBackground(new java.awt.Color(21,21,21));
+    }//GEN-LAST:event_jButton1MouseExited
+
+    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+        // TODO add your handling code here:
+        too = String.valueOf(jComboBox3.getSelectedItem());
+    }//GEN-LAST:event_jComboBox3ActionPerformed
+
+    private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
+        // TODO add your handling code here:
+        busString = String.valueOf(jComboBox4.getSelectedItem());
+    }//GEN-LAST:event_jComboBox4ActionPerformed
+
+    private void jComboBox1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBox1MouseClicked
+        // TODO add your handling code here:
+        String sqlBooking = "Select distinct fromm from booking";
+        jComboBox1.removeAllItems();
+        ArrayList rs = DatabaseHelper.fetchData(sqlBooking,"fromm");
+        for(int i=0;i<rs.size();i++)
+        {
+            jComboBox1.addItem(rs.get(i));
+        }
+        
+        jComboBox2.setEnabled(true);
+    }//GEN-LAST:event_jComboBox1MouseClicked
+
+    private void jComboBox2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBox2MouseClicked
+        // TODO add your handling code here:
+        String sqlPickUp = "Select distinct place from pickup where fromm = '"+fromm+"'";
+        jComboBox2.removeAllItems();
+        ArrayList rs = DatabaseHelper.fetchData(sqlPickUp,"place");
+        for(int i=0;i<rs.size();i++)
+        {
+            jComboBox2.addItem(rs.get(i));
+        }
+        jComboBox3.setEnabled(true);
+    }//GEN-LAST:event_jComboBox2MouseClicked
+
+    private void jComboBox3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBox3MouseClicked
+        // TODO add your handling code here:
+        String sqlToString = "select distinct too from booking where fromm ='"+fromm+"'";
+        jComboBox3.removeAllItems();
+        ArrayList rs = DatabaseHelper.fetchData(sqlToString,"too");
+        for(int i=0;i<rs.size();i++)
+        {
+            jComboBox3.addItem(rs.get(i));
+        }
+        jComboBox4.setEnabled(true);
+    }//GEN-LAST:event_jComboBox3MouseClicked
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+        pickUpPlace = String.valueOf(jComboBox2.getSelectedItem());
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void jComboBox4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBox4MouseClicked
+        // TODO add your handling code here:
+        //System.out.println(fromm+" "+too);
+        String sqlToString = "select distinct bus from booking where fromm ='"+fromm+"' and too = '"+too+"'" ;
+        jComboBox4.removeAllItems();
+        ArrayList rs = DatabaseHelper.fetchData(sqlToString,"bus");
+        for(int i=0;i<rs.size();i++)
+        {
+            jComboBox4.addItem(rs.get(i));
+        }
+        jComboBox5.setEnabled(true);
+    }//GEN-LAST:event_jComboBox4MouseClicked
+
+    private void jComboBox5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBox5MouseClicked
+        // TODO add your handling code here:
+        String sqlToString = "select distinct date from booking where fromm ='"+fromm+"' and too = '"+too+"' and bus = '"+busString+"'" ;
+        jComboBox5.removeAllItems();
+        ArrayList rs = DatabaseHelper.fetchData(sqlToString,"date");
+        for(int i=0;i<rs.size();i++)
+        {
+            jComboBox5.addItem(rs.get(i));
+        }
+        jComboBox6.setEnabled(true);
+    
+    }//GEN-LAST:event_jComboBox5MouseClicked
+
+    private void jComboBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox5ActionPerformed
+        // TODO add your handling code here:
+        dateString = String.valueOf(jComboBox5.getSelectedItem());
+    }//GEN-LAST:event_jComboBox5ActionPerformed
+
+    private void jComboBox6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBox6MouseClicked
+        // TODO add your handling code here:
+        String sqlToString = "select distinct time from booking where fromm ='"+fromm+"' and too = '"+too+"' and bus = '"+busString+"' and date = '"+dateString+"'" ;
+        jComboBox6.removeAllItems();
+        ArrayList rs = DatabaseHelper.fetchData(sqlToString,"time");
+        for(int i=0;i<rs.size();i++)
+        {
+            jComboBox6.addItem(rs.get(i));
+        }
+        bookSubmitButton.setEnabled(true);
+    }//GEN-LAST:event_jComboBox6MouseClicked
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        clearFlag();
+        DefaultTableModel dm = (DefaultTableModel) jTable1.getModel();
+        int rowCount = dm.getRowCount();
+        //Remove rows one by one from the end of the table
+        for (int i = rowCount - 1; i >= 0; i--) {
+            dm.removeRow(i);
+        }
+        flg[4]=true;
+        jButton5.setBackground(new java.awt.Color(122,122,122));
+        
+        jPanel1.removeAll();
+        jPanel1.repaint();
+        jPanel1.revalidate();
+        
+        jPanel1.add(PreviousPurchasePanel);
+        jPanel1.repaint();;
+        jPanel1.revalidate();
+        
+        
+        String sql = "select * from purchase where username = '"+userNameFromLogIn+"'";
+        ArrayList purchaseIdArrayList = DatabaseHelper.fetchData(sql, "p_id");
+        ArrayList busIDArrayList = DatabaseHelper.fetchData(sql, "bus_id");
+        System.err.println("busid"+busIDArrayList.get(0));
+        ArrayList seatArrayList = DatabaseHelper.fetchData(sql, "seat");
+        ArrayList statusArrayList = DatabaseHelper.fetchData(sql,"status");
+        ArrayList fromArrayList = new ArrayList();
+        ArrayList toArrayList = new ArrayList();
+        ArrayList busNameArrayList = new ArrayList();
+        ArrayList dateArrayList = new ArrayList();
+        ArrayList timeArrayList = new ArrayList();
+        
+        for(int i=0;i<purchaseIdArrayList.size();i++)
+        {
+//            System.err.println(purchaseIdArrayList.get(i)+" "+busIDArrayList.get(i)+" "+seatArrayList.get(i)+" "+statusArrayList.get(i));
+            sql = "select * from booking where id = '"+busIDArrayList.get(i)+"'";
+            ArrayList forUse = DatabaseHelper.fetchData(sql, "fromm");
+            if(forUse.size()>0){
+                fromArrayList.add(forUse.get(0));
+                forUse = DatabaseHelper.fetchData(sql, "too");
+                toArrayList.add(forUse.get(0));
+                forUse = DatabaseHelper.fetchData(sql, "bus");
+                busNameArrayList.add(forUse.get(0));
+                forUse = DatabaseHelper.fetchData(sql, "date");
+                dateArrayList.add(forUse.get(0));
+                forUse = DatabaseHelper.fetchData(sql, "time");
+                timeArrayList.add(forUse.get(0));
+            }
+        }
+        
+        for(int i=0;i<timeArrayList.size();i++)
+        {
+//            System.err.print(purchaseIdArrayList.get(i)+" ");
+//            System.err.print(fromArrayList.get(i)+" ");
+//            System.err.print(toArrayList.get(i)+" ");
+//            System.err.print(busNameArrayList.get(i)+" ");
+//            System.err.print(dateArrayList.get(i)+" ");
+//            System.err.println(timeArrayList.get(i)+" ");
+//            System.err.println(statusArrayList.get(i));
+            String sts = "";
+            if(statusArrayList.get(i).equals("2")) sts="Pending";
+            else if(statusArrayList.get(i).equals("1")) sts = "Accepted";
+            Object[] row = { purchaseIdArrayList.get(i), fromArrayList.get(i), toArrayList.get(i), 
+                busNameArrayList.get(i), dateArrayList.get(i), timeArrayList.get(i), sts};
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.addRow(row);
+        }
+        
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseEntered
+        // TODO add your handling code here:
+        if(flg[1]==false)
+            jButton2.setBackground(new java.awt.Color(93,93,93));
+    }//GEN-LAST:event_jButton2MouseEntered
+
+    private void jButton2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseExited
+        // TODO add your handling code here:
+        if(flg[1]==false)
+            jButton2.setBackground(new java.awt.Color(21,21,21));
+    }//GEN-LAST:event_jButton2MouseExited
+
+    private void jButton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseEntered
+        // TODO add your handling code here:
+        if(flg[2]==false)
+            jButton3.setBackground(new java.awt.Color(93,93,93));
+    }//GEN-LAST:event_jButton3MouseEntered
+
+    private void jButton3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseExited
+        // TODO add your handling code here:
+        if(flg[2]==false)
+            jButton3.setBackground(new java.awt.Color(21,21,21));
+    }//GEN-LAST:event_jButton3MouseExited
+
+    private void jButton4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseEntered
+        // TODO add your handling code here:
+        if(flg[3]==false)
+            jButton4.setBackground(new java.awt.Color(93,93,93));
+    }//GEN-LAST:event_jButton4MouseEntered
+
+    private void jButton4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseExited
+        // TODO add your handling code here:
+        if(flg[3]==false)
+            jButton4.setBackground(new java.awt.Color(21,21,21));
+    }//GEN-LAST:event_jButton4MouseExited
+
+    private void A1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_A1ActionPerformed
+
+    private void D1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_D1ActionPerformed
+
+    private void jComboBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox6ActionPerformed
+        // TODO add your handling code here:
+        timeString = String.valueOf(jComboBox6.getSelectedItem());
+    }//GEN-LAST:event_jComboBox6ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+        //System.err.println(str.getActionCommand());
+        System.out.println(A1.getText());
+        boolean ok=false;
+        String sql = "update booking set ";
+        String seats_selected="";
+        int cnt=0;
+        for(int i=0;i<40;i++)
+        {
+            if(seatFlag[i] && ok)
+            {
+                cnt++;
+                seats_selected += ", " + seats[i];
+                sql+= ", `" + seats[i] +"` = 2";
+            }
+            else if(seatFlag[i])
+            {
+                cnt++;
+                ok = true;
+                seats_selected+=seats[i];
+                sql+= "`" + seats[i] + "` = 2";
+            }
+        }
+        sql += " where fromm ='"+fromm+"' and too = '"+too+"' and bus = '"+busString+"' and date = '"+dateString+"' and time = '"+timeString+"'"; 
+        System.err.println(sql);
+        
+        if(ok)
+        {
+            String userSqlString= "select * from booking where fromm ='"+fromm+"' and too = '"+too+"' and bus = '"+busString+"' and date = '"+dateString+"' and time = '"+timeString+"'";
+            ArrayList res = DatabaseHelper.fetchData(userSqlString, "id");
+            String bus_id = (String) res.get(0);
+            String p_sql = "insert into purchase values(null, '"+userNameFromLogIn+"' , '"+Integer.parseInt(bus_id)+"' , '"+seats_selected+"' , 2,0)";
+            if(DatabaseHelper.update(sql) && DatabaseHelper.insert(p_sql))
+            {
+                String p_sql1 = "select * from purchase where userName = '"+userNameFromLogIn+"' and bus_id = '"+Integer.parseInt(bus_id)+"' and seat = '"+seats_selected+"'";
+                ArrayList p_id = DatabaseHelper.fetchData(p_sql1, "p_id");
+                int purchase_id = Integer.parseInt((String) p_id.get(0));
+                Object options[] = new Object[]{"HOME","Keep Buying"};
+                int answer = JOptionPane.showOptionDialog(this, "You have purchased "+String.valueOf(cnt)+" tickets: "+seats_selected+
+                        "\nPurchase id: "+String.valueOf(purchase_id),
+                        "Purchase Report", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+                if(answer==0)
+                {
+                    MainFrame ob = new MainFrame();
+                    ob.setVisible(true);
+                    ob.setUserNameFromLogIn(userNameFromLogIn);
+                    this.setVisible(false);
+                }
+                else if(answer==1)
+                {
+                    bookSubmitButtonActionPerformed(evt);
+                }
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(this,"Check Internet Connection\nTry Again.","Connection Error",JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(this, "No seat is selected !!","ERROR",JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+        
+        int purchase_id = Integer.parseInt(jTextField1.getText());
+        String sql = "select * from purchase where p_id = '"+purchase_id+"' and username = '"+userNameFromLogIn+"'";
+        ArrayList ar = DatabaseHelper.fetchData(sql, "seat");
+        if(DatabaseHelper.find(sql)==false)
+        {
+            JOptionPane.showMessageDialog(this, "Please Correct the ID","Wrong ID",JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        jButton9.setEnabled(false);
+        String seatlist = (String) ar.get(0);
+        System.err.println(seatlist);
+        seatSet = parseSeat(seatlist);
+        jeiSeatBadDibe.clear();
+        for(int i=0;i<seatSet.size();i++)
+        {
+            System.err.println(seatSet.get(i));
+            JCheckBox cb = new JCheckBox((String) seatSet.get(i));
+            jPanel2.setLayout(new GridLayout(0, 4, 10, 10));
+            jPanel2.add(cb);
+            jPanel2.repaint();
+            jPanel2.revalidate();
+            
+            cb.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if(cb.isSelected()==true) jeiSeatBadDibe.add(cb.getLabel());
+                    else jeiSeatBadDibe.remove(cb.getLabel());
+                }
+            });
+        }
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        // TODO add your handling code here:
+        int purchase_id = Integer.parseInt(jTextField1.getText());
+        String sql_bus = "select * from purchase where p_id = '"+purchase_id+"' and username = '"+userNameFromLogIn+"'";
+        ArrayList arr = DatabaseHelper.fetchData(sql_bus, "bus_id");
+        int bus_id = Integer.parseInt((String) arr.get(0));
+        String sql = "Update booking set ";
+        String p_sql = "Update purchase set seat = '";
+        String seatString = "";
+        boolean ok = false;
+        for(int i=0;i<jeiSeatBadDibe.size();i++)
+        {
+            seatSet.remove(jeiSeatBadDibe.get(i));
+            if(ok)
+            {
+                sql+= ", `"+ jeiSeatBadDibe.get(i) + "` = 0";
+            }
+            else
+            {
+                sql += "`"+ jeiSeatBadDibe.get(i) + "` = 0";
+                ok=true;
+            }
+        }
+        ok = false;
+        for(int i=0;i<seatSet.size();i++)
+        {
+            if(ok)
+            {
+                seatString+= ", "+seatSet.get(i);
+            }
+            else
+            {
+                seatString+=seatSet.get(i);
+                ok=true;
+            }
+        }
+        p_sql+=seatString+ "' where p_id = '"+purchase_id+"' and username = '"+userNameFromLogIn+"'";
+        sql += " where id = '"+bus_id+"'";
+        System.out.println(sql);
+        if(DatabaseHelper.update(sql) && DatabaseHelper.update(p_sql))
+        {
+            JOptionPane.showMessageDialog(this, "You have canceled your "+String.valueOf(jeiSeatBadDibe.size()) + "tickets",
+                    "Report",JOptionPane.INFORMATION_MESSAGE);
+            jButton2ActionPerformed(evt);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(this,"Check Internet Connection\nTry Again.","Connection Error",JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseEntered
+        // TODO add your handling code here:
+        if(flg[4]==false)
+            jButton5.setBackground(new java.awt.Color(93,93,93));
+    }//GEN-LAST:event_jButton5MouseEntered
+
+    private void jButton5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseExited
+        // TODO add your handling code here:
+        if(flg[4]==false)
+            jButton5.setBackground(new java.awt.Color(21,21,21));
+    }//GEN-LAST:event_jButton5MouseExited
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        // TODO add your handling code here:
+        String ticketIdString = jTextField3.getText();
+        String bKashIdString = jTextField4.getText();
+        if(ticketIdString.length()==0 || bKashIdString.length()==0)
+        {
+            jTextArea2.setText("Check Entry");
+            jTextArea2.setForeground(java.awt.Color.red);
+            return;
+        }
+        String sql = "select * from purchase where username = '"+userNameFromLogIn+"' and p_id = '"+ticketIdString+"'";
+        if(DatabaseHelper.find(sql))
+        {
+            System.err.println("*");
+            sql = "update purchase set bKash = '"+bKashIdString+"' where p_id = '"+ticketIdString+"'";
+            if(DatabaseHelper.update(sql))
+            {
+                jTextArea2.setText("You have successfully submitted your bKash id: "+bKashIdString+" for ticket ID: "+ticketIdString+"\n"
+                        + "Wait for the ADMIN to approve it" );
+                jTextArea2.setForeground(java.awt.Color.GREEN);
+            }
+            else
+            {
+                jTextArea2.setText("Check Internet connection");
+                jTextArea2.setForeground(java.awt.Color.red);
+            }
+        }
+        else
+        {
+            jTextArea2.setText("Check Entry");
+            jTextArea2.setForeground(java.awt.Color.red);
+        }
+        jTextArea3.setText("");
+        jTextField4.setText("");
+    }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        // TODO add your handling code here:
+        String ticketIdString=jTextField2.getText();
+        if(ticketIdString.length()==0)
+        {
+            jTextArea3.setText("Check the Input");
+            return;
+        }
+        String sql = "select * from purchase where p_id = '"+ticketIdString+"' and username = '"+userNameFromLogIn+"'";
+        if(DatabaseHelper.find(sql))
+        {
+            ArrayList purchaseId = DatabaseHelper.fetchData(sql, "p_id");
+            System.err.println(purchaseId.get(0));
+            
+            //jTextArea3.setText((String) purchaseId.get(0));
+            ArrayList bKashId = DatabaseHelper.fetchData(sql, "bKash");
+            ArrayList status = DatabaseHelper.fetchData(sql, "status");
+            String setString = "Your purchase id: "+purchaseId.get(0)+"\n";
+            if(bKashId.get(0).equals("0"))
+            {
+                setString+= "You haven't submitted your bKash ID yet\nSubmit it and then check here.";
+                jTextArea3.setText(setString);
+                jTextArea3.setForeground(java.awt.Color.red);
+            }
+            else if(status.get(0).equals("2"))
+            {
+                setString+= "Your bKash id: "+bKashId.get(0)+"\nAdmin has not approved your ticket.\nCome back letter.";
+                jTextArea3.setText(setString);
+                jTextArea3.setForeground(java.awt.Color.red);
+            }
+            else
+            {
+                setString += "Your bKash id: "+bKashId.get(0)+"\nAdmin has approved your ticket.\nCongratulation.";
+                jTextArea3.setText(setString);
+                jTextArea3.setForeground(java.awt.Color.green);
+            }
+        }
+        else
+        {
+            jTextArea3.setText("Wrong Entry !!");
+            jTextArea3.setForeground(java.awt.Color.red);
+        }
+    }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        String bus_id,seatDescription,status,bkashId;
+        String fromm,too,bus,dateString,timeString;
+        String name,email,phoneNo;
+        String ticketIdString = jTextField5.getText();
+        String sql = "select * from purchase where p_id = '"+ticketIdString+"' and username = '"+userNameFromLogIn+"'";
+        if(DatabaseHelper.find(sql))
+        {
+            ArrayList forUse = DatabaseHelper.fetchData(sql, "bus_id");
+            bus_id = (String) forUse.get(0);
+            forUse = DatabaseHelper.fetchData(sql, "seat");
+            seatDescription = (String) forUse.get(0);
+            forUse = DatabaseHelper.fetchData(sql, "status");
+            status = (String) forUse.get(0);
+            forUse = DatabaseHelper.fetchData(sql, "bKash");
+            bkashId = (String) forUse.get(0);
+            
+            sql = "select * from booking where id = '"+bus_id+"'";
+            forUse = DatabaseHelper.fetchData(sql, "fromm");
+            fromm = (String) forUse.get(0);
+            forUse = DatabaseHelper.fetchData(sql, "too");
+            too = (String) forUse.get(0);
+            forUse = DatabaseHelper.fetchData(sql, "bus");
+            bus = (String) forUse.get(0);
+            forUse = DatabaseHelper.fetchData(sql, "date");
+            dateString = (String) forUse.get(0);
+            forUse = DatabaseHelper.fetchData(sql, "time");
+            timeString = (String) forUse.get(0);
+            
+            sql = "select * from users where username = '"+userNameFromLogIn+"'";
+            forUse = DatabaseHelper.fetchData(sql, "name");
+            name = (String) forUse.get(0);
+            forUse = DatabaseHelper.fetchData(sql, "email");
+            email = (String) forUse.get(0);
+            forUse = DatabaseHelper.fetchData(sql, "phone");
+            phoneNo = (String) forUse.get(0);
+            
+            String setText="";
+            setText+=" Purchase ID: "+ticketIdString;
+            setText+="\n Name: "+name;
+            setText+="\n Email: "+email;
+            setText+="\n Phone No: "+phoneNo;
+            
+            setText+="\n\n From: " + fromm + "                   To: "+too;
+            setText+="\n Bus: " + bus + "    Date: " +dateString+"    Time: "+timeString;
+            
+            setText+="\n\n Seats: "+seatDescription;
+            setText+="\n Status: ";
+            if(status.equals("1")) setText+="Accepted";
+            else setText+="Pending";
+            setText+= "    bKash ID: ";
+            if(bkashId.equals("0")) setText+="Not Given";
+            else setText+=bkashId;
+            setText+="\n";
+            
+            jTextArea1.setText(setText);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(this, "Correct Your Input","Wrong Entry!!",JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+        // TODO add your handling code here:
+        PrintSupport.printComponent(jTextArea1);
+    }//GEN-LAST:event_jButton14ActionPerformed
+
+    private void jButton7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseEntered
+        // TODO add your handling code here:
+        if(flg[6]==false)
+            jButton7.setBackground(new java.awt.Color(93,93,93));
+    }//GEN-LAST:event_jButton7MouseEntered
+
+    private void jButton12MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseEntered
+        // TODO add your handling code here:
+        if(flg[7]==false)
+            jButton12.setBackground(new java.awt.Color(93,93,93));
+    }//GEN-LAST:event_jButton12MouseEntered
+
+    private void jButton7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseExited
+        // TODO add your handling code here:
+        if(flg[6]==false)
+            jButton7.setBackground(new java.awt.Color(21,21,21));
+    }//GEN-LAST:event_jButton7MouseExited
+
+    private void jButton12MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseExited
+        // TODO add your handling code here:
+        if(flg[7]==false)
+            jButton12.setBackground(new java.awt.Color(21,21,21));
+    }//GEN-LAST:event_jButton12MouseExited
+
+    private void F1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_F1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_F1ActionPerformed
+
+    
+    private ArrayList parseSeat(String seats)
+    {
+        ArrayList resultArrayList = new ArrayList();
+        String st="";
+        for(int i=0;i<seats.length();i++)
+        {
+            if(seats.charAt(i)>='A' && seats.charAt(i)<='Z')
+            {
+                st+=seats.charAt(i);
+            }
+            else if(seats.charAt(i)>='1' && seats.charAt(i)<='9')
+            {
+                st+=seats.charAt(i);
+            }
+            else if(st.length()>0)
+            {
+                System.err.println(st);
+                resultArrayList.add(st);
+                st="";
+            }
+            if(i==seats.length()-1)
+            {
+                resultArrayList.add(st);
+                st="";
+            }
+        }
+        return resultArrayList;
+    }
+    
+    private void fullClear()
+    {
+        jPanel2.removeAll();
+        jTextField1.setText("");
+        jButton9.setEnabled(true);
+    }
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new MainFrame().setVisible(true);
+            }
+        });
+    }
+    
+    public void clearFlag()
+    {
+        if(flg[0]==true)
+        {
+            jButton1.setBackground(new java.awt.Color(21,21,21));
+            flg[0]=false;
+        }
+        if(flg[1]==true)
+        {
+            jButton2.setBackground(new java.awt.Color(21,21,21));
+            flg[1]=false;
+        }
+        if(flg[2]==true)
+        {
+            jButton3.setBackground(new java.awt.Color(21,21,21));
+            flg[2]=false;
+        }
+        if(flg[3]==true)
+        {
+            jButton4.setBackground(new java.awt.Color(21,21,21));
+            flg[3]=false;
+        }
+        if(flg[4]==true)
+        {
+            jButton5.setBackground(new java.awt.Color(21,21,21));
+            flg[4]=false;
+        }
+        if(flg[6]==true)
+        {
+            jButton7.setBackground(new java.awt.Color(21,21,21));
+            flg[6]=false;
+        }
+        if(flg[7]==true)
+        {
+            jButton12.setBackground(new java.awt.Color(21,21,21));
+            flg[7]=false;
+        }
+        
+    }
+    
+    public void clearSeatFlag()
+    {
+        for(int i=0;i<40;i++)
+        {
+            seatFlag[i]=false;
+        }
+    }
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton A1;
+    private javax.swing.JButton A2;
+    private javax.swing.JButton A3;
+    private javax.swing.JButton A4;
+    private javax.swing.JMenuItem About;
+    private javax.swing.JButton B1;
+    private javax.swing.JButton B2;
+    private javax.swing.JButton B3;
+    private javax.swing.JButton B4;
+    private javax.swing.JPanel BookingPanel;
+    private javax.swing.JButton C1;
+    private javax.swing.JButton C2;
+    private javax.swing.JButton C3;
+    private javax.swing.JButton C4;
+    private javax.swing.JPanel CancelPanel;
+    private javax.swing.JPanel Copy;
+    private javax.swing.JButton D1;
+    private javax.swing.JButton D2;
+    private javax.swing.JButton D3;
+    private javax.swing.JButton D4;
+    private javax.swing.JButton E1;
+    private javax.swing.JButton E2;
+    private javax.swing.JButton E3;
+    private javax.swing.JButton E4;
+    private javax.swing.JButton F1;
+    private javax.swing.JButton F2;
+    private javax.swing.JButton F3;
+    private javax.swing.JButton F4;
+    private javax.swing.JButton G1;
+    private javax.swing.JButton G2;
+    private javax.swing.JButton G3;
+    private javax.swing.JButton G4;
+    private javax.swing.JButton H1;
+    private javax.swing.JButton H2;
+    private javax.swing.JButton H3;
+    private javax.swing.JButton H4;
+    private javax.swing.JButton I1;
+    private javax.swing.JButton I2;
+    private javax.swing.JButton I3;
+    private javax.swing.JButton I4;
+    private javax.swing.JButton J1;
+    private javax.swing.JButton J2;
+    private javax.swing.JButton J3;
+    private javax.swing.JButton J4;
+    private javax.swing.JPanel PaymentPanel;
+    private javax.swing.JPanel PaymentStatusPanel;
+    private javax.swing.JPanel PreviousPurchasePanel;
+    private javax.swing.JPanel PrintPanel;
+    private javax.swing.JPanel SeatPlanPanel;
+    private javax.swing.JButton bookSubmitButton;
+    private javax.swing.JMenu fileMenu;
+    private javax.swing.JMenu helpMenu;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
+    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox jComboBox2;
+    private javax.swing.JComboBox jComboBox3;
+    private javax.swing.JComboBox jComboBox4;
+    private javax.swing.JComboBox jComboBox5;
+    private javax.swing.JComboBox jComboBox6;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextArea jTextArea3;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        for(int i=0;i<40;i++)
+        {
+            if(e.getSource()==btnButton[i])
+            {
+                if(seatFlag[i]==false)
+                {
+                    btnButton[i].setIcon(selectIcon);
+                    seatFlag[i]=true;
+                }
+                else
+                {
+                    btnButton[i].setIcon(zero);
+                    seatFlag[i]=false;
+                }    
+            }
+        }
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+}
